@@ -1,0 +1,525 @@
+{% extends 'base.html' %}
+{% block title %}LearnCare Edu Hub | MBBS Admission Guidance{% endblock %}
+{% block content %}
+
+
+<section class="relative h-[68vh]  bg-center bg-cover flex items-center justify-center"
+    style="background-image:url('https://www.globalcareercounsellor.com/blog/wp-content/uploads/2021/12/Start-an-Overseas-Education-Consultancy-1.jpg');">
+
+    <!-- dark overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-black/40"></div>
+
+    <!-- glow accents -->
+    <div class="absolute top-10 left-10 w-60 h-60 bg-lcLight/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-60 h-60 bg-lcPrimary/20 rounded-full blur-3xl"></div>
+
+    <!-- centered content -->
+    <div class="relative max-w-3xl px-6 text-center">
+
+        <!-- Heading -->
+        <h1 class="text-3xl md:text-5xl uppercase text-white mb-8 leading-tight">
+            Secure Your Career With LearnCare
+        </h1>
+
+        <!-- Buttons -->
+        <div class="flex gap-3 justify-center">
+
+            <a href="/contact/" data-aos="fade-right"
+               class="w-1/2 sm:w-auto text-center px-5 py-3 rounded-full bg-lc-gradient text-white font-semibold shadow-md hover:scale-105 transition duration-300">
+               <i class="fas fa-paper-plane mr-2"></i> Enquire
+            </a>
+ 
+            <a href="/colleges-and-courses/" data-aos="fade-left"
+               class="w-1/2 sm:w-auto text-center px-5 py-3 rounded-full border border-white text-white font-semibold hover:bg-white hover:text-lcPrimary transition duration-300">
+               <i class="fas fa-university mr-2"></i> Colleges
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+<section class="py-8 bg-lcPrimary text-white relative overflow-hidden">
+
+    <!-- Soft background glow -->
+    <div class="absolute -top-20 -left-20 w-72 h-72 bg-lcLight/30 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-0 w-72 h-72 bg-white/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6" data-aos="zoom-in">
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+            <!-- Success Stories -->
+            <div>
+                <h3 class="text-3xl md:text-4xl font-bold counter" data-target="2000">0</h3>
+                <p class="mt-2 text-sm md:text-base text-white/80">
+                    Success Stories
+                </p>
+            </div>
+
+            <!-- Admissions -->
+            <div>
+                <h3 class="text-3xl md:text-4xl font-bold counter" data-target="500">0</h3>
+                <p class="mt-2 text-sm md:text-base text-white/80">
+                    Admissions Guided
+                </p>
+            </div>
+
+            <!-- States -->
+            <div>
+                <h3 class="text-3xl md:text-4xl font-bold counter" data-target="6">0</h3>
+                <p class="mt-2 text-sm md:text-base text-white/80">
+                    States Covered
+                </p>
+            </div>
+
+            <!-- Support -->
+            <div>
+                <h3 class="text-3xl md:text-4xl font-bold">100%</h3>
+                <p class="mt-2 text-sm md:text-base text-white/80">
+                    Transparent Guidance
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<script>
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+
+    const startCounting = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const updateCount = () => {
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(updateCount, 10);
+            } else {
+                counter.innerText = target + "+";
+            }
+        };
+        updateCount();
+    };
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCounting(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+</script>
+
+
+
+
+
+<section class="py-20 bg-gray-50" data-aos="fade-right">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl md:text-4xl mb-12 text-lcDark uppercase">
+            Choose Your Preferred Location
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-10 justify-items-center">
+
+            <!-- Kerala -->
+            <a href="#" class="group relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2"
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Kerala">
+
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center rounded-full">
+                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">
+                        Kerala
+                    </h3>
+                </div>
+            </a>
+
+            <!-- Karnataka -->
+            <a href="#" class="group relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                <img src="https://media.istockphoto.com/id/1433555981/photo/vidhana-soudha-in-bangalore-india-the-seat-of-the-state-legislature-of-karnataka.jpg?s=612x612&w=0&k=20&c=cruiVCYcKeFM7axGFX1m_K95rgDMzAQlS2ZUhQGIKYc="
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Karnataka">
+
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center rounded-full">
+                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">
+                        Karnataka
+                    </h3>
+                </div>
+            </a>
+
+            <!-- Tamil Nadu -->
+            <a href="#" class="group relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                <img src="https://t4.ftcdn.net/jpg/08/66/31/19/360_F_866311958_LP9Ow0f9xAZu5MjXmwaKp21BNPs3lYfQ.jpg"
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Tamil Nadu">
+
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center rounded-full">
+                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">
+                        Tamil Nadu
+                    </h3>
+                </div>
+            </a>
+
+            <!-- Telangana -->
+            <a href="#" class="group relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                <img src="https://s7ap1.scene7.com/is/image/incredibleindia/2-charminar-hyderabad-telangana-state-hero"
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="Telangana">
+
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center rounded-full">
+                    <h3 class="text-white text-lg md:text-xl font-semibold tracking-wide">
+                        Telangana
+                    </h3>
+                </div>
+            </a>
+
+
+            <!-- Mangaluru -->
+            <a href="" class="group relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                <img src="https://media.istockphoto.com/id/508946710/photo/indian-city-of-mangalore.jpg?s=612x612&w=0&k=20&c=iKzGM5Thj373lXWhkyLkk0Gp7xtsRMQ-2oFsCuc7Irk="
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    alt="Mangaluru Beach">
+
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center rounded-full">
+                    <h3 class="text-white text-lg md:text-xl font-semibold">Mangaluru</h3>
+                </div>
+            </a>
+
+            <!-- Hyderabad -->
+            <a href="" class="group relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden shadow-xl">
+                <img src="https://t4.ftcdn.net/jpg/03/60/89/09/360_F_360890991_Ykybj5JO5HYBaqWeROz9cR2jWXN8HZxf.jpg"
+                    class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                    alt="Hyderabad City">
+
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center rounded-full">
+                    <h3 class="text-white text-lg md:text-xl font-semibold">Hyderabad</h3>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="py-20 bg-white" data-aos="fade-left">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl md:text-4xl text-lcDark mb-4 uppercase">
+            Our Courses
+        </h2>
+        <p class="text-gray-600 mb-14">
+            Explore professional programs across India
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-10">
+
+            <!-- Medical UG -->
+            <a href="{% url 'contact' %}" class="group relative rounded-3xl overflow-hidden h-80">
+
+                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54" class="absolute inset-0 w-full h-full object-cover 
+                            group-hover:scale-110 transition duration-700" alt="Medical UG Programs">
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40"></div>
+
+                <div class="relative h-full flex flex-col justify-center items-center text-center text-white px-6">
+                    <i class="fas fa-user-md text-4xl mb-4 text-lcLight"></i>
+                    <h3 class="text-2xl font-semibold mb-3">
+                        Medical UG Programs
+                    </h3>
+                    <p class="text-sm text-gray-200">
+                        MBBS, BDS, BAMS, Pharm-D
+                    </p>
+                </div>
+            </a>
+
+            <!-- Nursing -->
+            <a href="{% url 'contact' %}" class="group relative rounded-3xl overflow-hidden h-80">
+
+                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3" class="absolute inset-0 w-full h-full object-cover 
+                            group-hover:scale-110 transition duration-700" alt="Nursing Programs">
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40"></div>
+
+                <div class="relative h-full flex flex-col justify-center items-center text-center text-white px-6">
+                    <i class="fas fa-heartbeat text-4xl mb-4 text-lcLight"></i>
+                    <h3 class="text-2xl font-semibold mb-3">
+                        Nursing & Allied Health
+                    </h3>
+                    <p class="text-sm text-gray-200">
+                        BSc Nursing, GNM, MLT, Radiology
+                    </p>
+                </div>
+            </a>
+
+            <!-- Engineering -->
+            <a href="{% url 'contact' %}" class="group relative rounded-3xl overflow-hidden h-80">
+
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" class="absolute inset-0 w-full h-full object-cover 
+                            group-hover:scale-110 transition duration-700" alt="Engineering Programs">
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-black/40"></div>
+
+                <div class="relative h-full flex flex-col justify-center items-center text-center text-white px-6">
+                    <i class="fas fa-laptop-code text-4xl mb-4 text-lcLight"></i>
+                    <h3 class="text-2xl font-semibold mb-3">
+                        Engineering & Management
+                    </h3>
+                    <p class="text-sm text-gray-200">
+                        B.Tech, BBA, BCA, AI & Data Science
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="py-20 bg-white" data-aos="fade-right">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl md:text-4xl mb-4 text-lcDark uppercase">
+            Our Partner Universities
+        </h2>
+        <p class="text-gray-600 mb-12">
+            Collaborating with reputed institutions across South India
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
+
+            <!-- Christ University - Bangalore -->
+            <div class="bg-white  duration-300">
+                <img src="https://cis-india.org/Christuniversitylogocolour.jpg/image_preview"
+                    alt="Christ University Bangalore"
+                    class="mx-auto h-16 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+
+            <!-- University of Kerala -->
+            <div class="bg-white  duration-300">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Kerala_University_Emblem.png"
+                    alt="University of Kerala"
+                    class="mx-auto h-16 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+
+            <!-- Osmania University - Hyderabad -->
+            <div class="bg-white  duration-300">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4C9XoT6VbeW5VXiNZUSwQcOGkh28v36rcHQ&s"
+                    alt="Osmania University Hyderabad"
+                    class="mx-auto h-16 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+
+            <!-- University of Mysore -->
+            <div class="bg-white p-6 transition duration-300">
+                <img src="https://d2lk14jtvqry1q.cloudfront.net/media/large_1006_8851ff21a8_896adbdefe.png"
+                    alt="University of Mysore"
+                    class="mx-auto h-16 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+
+            <!-- Anna University - Tamil Nadu -->
+            <div class="bg-white p-6 duration-300">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1dlYH_8uU2TYnvyCzeZ8Z4OnfAlg5sewfOg&s"
+                    alt="Anna University Tamil Nadu"
+                    class="mx-auto h-16 object-contain opacity-80 hover:opacity-100 transition">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<section class="py-20 bg-gray-50" data-aos="fade-left">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl text-lcDark md:text-4xl mb-12 uppercase">Our Branches</h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="p-8 bg-white shadow rounded-xl">
+                <h3 class="text-xl mb-3 text-lcPrimary">Karunagappally</h3>
+                <p class="text-gray-600 mb-4">High School JN, Kollam</p>
+                <a href="https://maps.google.com" target="_blank" class="text-lcPrimary font-semibold">
+                    <i class="fas fa-map-marker-alt mr-2"></i>View on Google Maps
+                </a>
+            </div>
+
+            <div class="p-8 bg-white shadow rounded-xl">
+                <h3 class="text-xl mb-3 text-lcPrimary">Piravom</h3>
+                <p class="text-gray-600 mb-4">Branch Office</p>
+                <a href="https://maps.google.com" target="_blank" class="text-lcPrimary font-semibold">
+                    <i class="fas fa-map-marker-alt mr-2"></i>View on Google Maps
+                </a>
+            </div>
+
+            <div class="p-8 bg-white shadow rounded-xl">
+                <h3 class="text-xl mb-3 text-lcPrimary">Pathanamthitta</h3>
+                <p class="text-gray-600 mb-4">Branch Office</p>
+                <a href="https://maps.google.com" target="_blank" class="text-lcPrimary font-semibold">
+                    <i class="fas fa-map-marker-alt mr-2"></i>View on Google Maps
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="py-20 bg-lcPrimary text-white overflow-hidden" data-aos="fade-right">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+
+        <h2 class="text-3xl md:text-4xl mb-12 uppercase">
+            What Students Say
+        </h2>
+
+        <div class="relative">
+
+            <!-- Slider Wrapper -->
+            <div id="testimonial-track" class="flex transition-transform duration-700 ease-in-out">
+
+                <!-- Testimonial 1 -->
+                <div class="min-w-full px-6">
+                    <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl max-w-3xl mx-auto">
+
+                        <!-- Stars -->
+                        <div class="flex justify-center mb-4 text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                        <p class="text-lg mb-6 text-black/90">
+                            "LearnCare guided me perfectly for MBBS admission in Karnataka.
+                            Highly recommended!"
+                        </p>
+
+                        <h4 class="font-semibold text-lcLight">
+                            – Anjali S
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="min-w-full px-6">
+                    <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl max-w-3xl mx-auto">
+
+                        <div class="flex justify-center mb-4 text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+
+                        <p class="text-lg mb-6 text-black/90">
+                            "Very transparent process and supportive team.
+                            Got Nursing admission easily."
+                        </p>
+
+                        <h4 class="font-semibold text-lcLight">
+                            – Rahul K
+                        </h4>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="min-w-full px-6">
+                    <div class="bg-white/90 backdrop-blur-md p-8 rounded-3xl max-w-3xl mx-auto">
+
+                        <div class="flex justify-center mb-4 text-yellow-400 text-lg">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+
+                        <p class="text-lg mb-6 text-black/90">
+                            "Professional counselling and clear guidance.
+                            Thank you LearnCare Edu Hub."
+                        </p>
+
+                        <h4 class="font-semibold text-lcLight">
+                            – Meera P
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<script>
+    const track = document.getElementById('testimonial-track');
+    const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    const totalSlides = track.children.length;
+
+    function updateSlider(index) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('bg-white'));
+        dots[index].classList.add('bg-white');
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSlider(currentIndex);
+        });
+    });
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider(currentIndex);
+    }, 5000);
+
+    updateSlider(currentIndex);
+</script>
+
+
+
+
+
+
+
+{% endblock %}

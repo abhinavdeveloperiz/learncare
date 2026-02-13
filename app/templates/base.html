@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LearnCare Edu Hub | MBBS Admission Guidance{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- SEO -->
+    <meta name="description"
+        content="LearnCare Edu Hub provides MBBS admission guidance, NEET counselling support and medical college information across India.">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- aosanimation  -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+
+    <!-- Tailwind Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lcDark: "#0A5F7A",
+                        lcPrimary: "#0F766E",
+                        lcTeal: "#0E9F9A",
+                        lcLight: "#2EC4B6",
+                    },
+                    backgroundImage: {
+                        'lc-gradient': 'linear-gradient(90deg, #0F766E, #0E9F9A, #2EC4B6)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body,
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+
+        p,
+        span,
+        li,
+        a,
+        button,
+        input,
+        textarea,
+        select,
+        div {
+            font-family: "Josefin Sans", sans-serif !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Poppins", sans-serif !important;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+
+
+<!-- FLOATING ACTION BUTTONS -->
+<div class="fixed bottom-6 right-6 flex flex-col items-end gap-4 z-50">
+
+    <!-- Call Button -->
+    <a href="tel:+917795990059"
+        class="relative flex items-center justify-center w-14 h-14 rounded-full bg-lcPrimary text-white shadow-lg hover:scale-110 transition duration-300 group">
+
+        <i class="fas fa-phone-alt text-lg"></i>
+
+        <!-- Tooltip -->
+        <span
+            class="absolute right-16 bg-white text-lcPrimary text-xs px-3 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+            Call Now
+        </span>
+    </a>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/917795990059" target="_blank"
+        class="relative flex items-center justify-center w-14 h-14 rounded-full bg-green-500 text-white shadow-lg hover:scale-110 transition duration-300 group animate-pulse">
+
+        <i class="fab fa-whatsapp text-xl"></i>
+
+        <!-- Tooltip -->
+        <span
+            class="absolute right-16 bg-white text-green-600 text-xs px-3 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+            Chat on WhatsApp
+        </span>
+    </a>
+
+</div>
+
+
+
+
+<body class="bg-white text-gray-800">
+
+    <!-- ================= NAVBAR ================= -->
+    <header class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="/" class="flex items-center">
+                <img src="{% static 'images/logo.png' %}" alt="LearnCare Edu Hub" class="h-16 w-auto">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex space-x-10 font-medium text-[16px]">
+                <a href="/" class="hover:text-lcPrimary transition">Home</a>
+                <a href="/about/" class="hover:text-lcPrimary transition">About</a>
+                <a href="/colleges-and-courses/" class="hover:text-lcPrimary transition">Colleges</a>
+            </nav>
+
+            <!-- CTA -->
+            <div class="">
+                <a href="/contact/"
+                    class="px-4 py-3 ml-16 rounded-full text-white bg-lc-gradient hover:opacity-90 transition">
+                    Get Guidance
+                </a>
+            </div>
+
+            <!-- Mobile Button -->
+            <button id="menu-btn" class="md:hidden text-2xl text-lcPrimary">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- ================= MOBILE MENU ================= -->
+    <div id="mobile-menu"
+        class="fixed top-0 right-[-100%] w-80 h-full bg-white shadow-xl transition-all duration-300 z-50">
+
+        <div class="flex justify-between items-center p-5 border-b">
+            <img src="{% static 'images/logo.png' %}" class="h-10">
+            
+            <button id="close-btn" class="text-xl text-lcPrimary">
+                <i class="fas fa-times"></i>
+            </button>
+            
+        </div>
+
+        <nav class="flex flex-col p-8 space-y-6 text-lg">
+            <a href="/" class="hover:text-lcPrimary">Home</a>
+            <a href="/about/" class="hover:text-lcPrimary">About</a>
+            <a href="/colleges-and-courses/" class="hover:text-lcPrimary">Colleges</a>
+
+            
+        </nav>
+    </div>
+
+    <div id="overlay" class="fixed inset-0 bg-black/30 hidden z-40"></div>
+
+    <!-- ================= CONTENT ================= -->
+    <main class="pt-20">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class=" border-t">
+        <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-12">
+
+            <!-- Logo -->
+            <div>
+                <img src="{% static 'images/logo.png' %}" class="h-12 mb-4">
+                <p class="text-sm text-gray-600 leading-6">
+                    LearnCare Edu Hub is an independent MBBS admission guidance platform helping students with NEET
+                    counselling and medical college selection.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="mb-5 text-lg">Quick Links</h4>
+                <ul class="space-y-3 text-gray-600">
+                    <li><a href="/" class="hover:text-lcPrimary">Home</a></li>
+                    <li><a href="/about/" class="hover:text-lcPrimary">About</a></li>
+                    <li><a href="/colleges-and-courses/" class="hover:text-lcPrimary">Colleges</a></li>
+                    <li><a href="/contact/" class="hover:text-lcPrimary">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h4 class="mb-5 text-lg">Services</h4>
+                <ul class="space-y-3 text-gray-600">
+                    <li>MBBS Admission</li>
+                    <li>NEET Counselling</li>
+                    <li>College Comparison</li>
+                    <li>Career Guidance</li>
+                </ul>
+            </div>
+
+            <!-- Social -->
+            <div>
+                <h4 class="mb-5 text-lg">Follow Us</h4>
+                <div class="flex space-x-5 text-xl text-lcPrimary">
+                    <a href="#"><i class="fab fa-facebook-f hover:text-lcDark"></i></a>
+                    <a href="#"><i class="fab fa-instagram hover:text-lcDark"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in hover:text-lcDark"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp hover:text-lcDark"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-sm py-5 border-t text-gray-500">
+            © {% now "Y" %} LearnCare Edu Hub. All Rights Reserved.
+        </div>
+
+
+        <div class="text-center text-sm py-5 border-t text-gray-500">
+
+            Developed By
+            <a href="https://wa.me/919495508938" target="_blank"
+                class="text-lcPrimary font-medium hover:underline inline-flex items-center gap-1 mb-4">
+
+                <i class="fab fa-whatsapp"></i>
+                9495508938
+            </a>
+
+        </div>
+
+    </footer>
+
+    <!-- ================= SCRIPT ================= -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.style.right = "0";
+            overlay.classList.remove("hidden");
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.style.right = "-100%";
+            overlay.classList.add("hidden");
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.style.right = "-100%";
+            overlay.classList.add("hidden");
+        });
+    </script>
+
+
+
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-in-out',
+            offset: 100
+        });
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Contact | LearnCare Edu Hub{% endblock %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="relative py-24 bg-fixed bg-center bg-cover text-white overflow-hidden "
+    style="background-image: url('https://static9.depositphotos.com/1594308/1249/i/450/depositphotos_12497883-stock-photo-business-coaching.jpg');">
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-3xl md:text-5xl font-semibold mb-4 uppercase">
+            Contact Us
+        </h1>
+        <p class="max-w-3xl mx-auto text-white/90 text-lg">
+            <a href="/" class="hover:underline">Home</a> > Contact
+        </p>
+    </div>
+</section>
+
+
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <h2 class="text-3xl font-bold text-center text-blue-900 mb-12">
+            Our Branches
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+            <!-- Kollam -->
+            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
+
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-building text-orange-300 text-xl"></i>
+                    <h3 class="font-semibold text-xl">Kollam</h3>
+                </div>
+
+                <p class="text-white/90 flex items-start gap-2">
+                    <i class="fa-solid fa-location-dot mt-1"></i>
+                    High School Junction, Karunagappally
+                </p>
+
+             
+
+                <div class="flex gap-4 mt-4">
+                    <a href="https://maps.google.com/?q=Karunagappally Kerala"
+                       target="_blank"
+                       class="text-sm bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
+                        View Map
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Piravom -->
+            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-building text-orange-300"></i>
+                    <h3 class="font-semibold text-xl">Piravom</h3>
+                </div>
+
+                <p class="text-white/90 flex items-start gap-2">
+                    <i class="fa-solid fa-location-dot mt-1"></i>
+                    Piravom, Kerala
+                </p>
+
+                <a href="https://maps.google.com/?q=Piravom Kerala"
+                   target="_blank"
+                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
+                    View Map
+                </a>
+            </div>
+
+
+            <!-- Thodupuzha -->
+            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-building text-orange-300"></i>
+                    <h3 class="font-semibold text-xl">Thodupuzha</h3>
+                </div>
+
+                <p class="text-white/90 flex items-start gap-2">
+                    <i class="fa-solid fa-location-dot mt-1"></i>
+                    Thodupuzha, Kerala
+                </p>
+
+                <a href="https://maps.google.com/?q=Thodupuzha Kerala"
+                   target="_blank"
+                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
+                    View Map
+                </a>
+            </div>
+
+
+            <!-- Pathanamthitta -->
+            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-building text-orange-300"></i>
+                    <h3 class="font-semibold text-xl">Pathanamthitta</h3>
+                </div>
+
+                <p class="text-white/90 flex items-start gap-2">
+                    <i class="fa-solid fa-location-dot mt-1"></i>
+                    Pathanamthitta, Kerala
+                </p>
+
+                <a href="https://maps.google.com/?q=Pathanamthitta Kerala"
+                   target="_blank"
+                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
+                    View Map
+                </a>
+            </div>
+
+
+            <!-- Kolenchery -->
+            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
+                <div class="flex items-center gap-3 mb-3">
+                    <i class="fa-solid fa-building text-orange-300"></i>
+                    <h3 class="font-semibold text-xl">Kolenchery</h3>
+                </div>
+
+                <p class="text-white/90 flex items-start gap-2">
+                    <i class="fa-solid fa-location-dot mt-1"></i>
+                    Kolenchery, Kerala
+                </p>
+
+                <a href="https://maps.google.com/?q=Kolenchery Kerala"
+                   target="_blank"
+                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
+                    View Map
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<!-- CONTACT FORM -->
+<section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+
+        <h2 class="text-3xl font-bold text-center text-blue-900 mb-10">
+            Send Your Inquiry
+        </h2>
+
+        <form method="POST" class="bg-gray-50 p-8 rounded-xl shadow-lg">
+            {% csrf_token %}
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div>
+                    <label class="block mb-2 font-medium">Full Name</label>
+                    <input type="text" name="name" placeholder="Enter Name" required
+                        class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
+                </div>
+
+                <div>
+                    <label class="block mb-2 font-medium">Phone Number</label>
+                    <input type="text" name="phone" placeholder="Enter Number" required
+                        class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
+                </div>
+
+                <div>
+                    <label class="block mb-2 font-medium">Preferred Course</label>
+                    <input type="text" name="Course" placeholder="Enter Course" required
+                        class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
+                </div>
+
+                <div>
+                    <label class="block mb-2 font-medium">Preferred Location</label>
+                    <input type="text" name="Location" placeholder="Location" required
+                        class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
+                </div>
+
+            </div>
+
+            <div class="mt-6">
+                <label class="block mb-2 font-medium">Message</label>
+                <textarea name="message" rows="4" placeholder="Type here..."
+                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none"></textarea>
+            </div>
+
+            <button type="submit"
+                class="mt-6 w-full bg-lc-gradient text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+                Submit Inquiry
+            </button>
+
+        </form>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="py-16 bg-lc-gradient text-white text-center">
+    <h2 class="text-3xl font-bold mb-4">Start Your Medical Career Journey Today</h2>
+    <p class="mb-6">Expert admission guidance & trusted college placements.</p>
+
+    <a href="tel:+917795990059" class="bg-lcDark px-8 py-3 rounded-lg font-semibold hover:opacity-80 transition">
+        Call Now
+    </a>
+</section>
+
+{% endblock %}
