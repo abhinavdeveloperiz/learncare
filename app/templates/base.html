@@ -26,6 +26,13 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/logo.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/logo.png' %}">
+
+
+
     <!-- Tailwind Custom Colors -->
     <script>
         tailwind.config = {
@@ -52,7 +59,7 @@
             max-width: 100%;
             overflow-x: hidden;
         }
-        
+
 
         p,
         span,
@@ -153,11 +160,11 @@
 
         <div class="flex justify-between items-center p-5 border-b">
             <img src="{% static 'images/logo.png' %}" class="h-10">
-            
+
             <button id="close-btn" class="text-xl text-lcPrimary">
                 <i class="fas fa-times"></i>
             </button>
-            
+
         </div>
 
         <nav class="flex flex-col p-8 space-y-6 text-lg">
@@ -165,7 +172,7 @@
             <a href="/about/" class="hover:text-lcPrimary">About</a>
             <a href="/colleges-and-courses/" class="hover:text-lcPrimary">Colleges</a>
 
-            
+
         </nav>
     </div>
 
