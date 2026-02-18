@@ -143,30 +143,14 @@
         <!-- States Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 
-            <div class="bg-white/10 backdrop-blur-md py-3 rounded-xl hover:bg-white/20 transition">
-                Kerala
-            </div>
+            {% for loc in location %}
+            <a href="{% url 'college' %}"
+                class="bg-white text-black backdrop-blur-md py-3 rounded-xl hover:bg-opacity-90 transition">
+                {{ loc.state }}
+            </a>
 
-            <div class="bg-white/10 backdrop-blur-md py-3 rounded-xl hover:bg-white/20 transition">
-                Karnataka
-            </div>
+            {% endfor %}
 
-            <div class="bg-white/10 backdrop-blur-md py-3 rounded-xl hover:bg-white/20 transition">
-                Tamil Nadu
-            </div>
-
-            <div class="bg-white/10 backdrop-blur-md py-3 rounded-xl hover:bg-white/20 transition">
-                Andhra Pradesh
-            </div>
-
-            <div class="bg-white/10 backdrop-blur-md py-3 rounded-xl hover:bg-white/20 transition">
-                Telangana
-            </div>
-
-            <!-- Highlighted City -->
-            <div class="bg-white/10 backdrop-blur-md py-3 rounded-xl hover:bg-white/20 transition">
-                Hyderabad
-            </div>
 
         </div>
 

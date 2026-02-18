@@ -3,6 +3,57 @@
 {% block title %}Contact | LearnCare Edu Hub{% endblock %}
 {% block content %}
 
+
+{% if messages %}
+<div id="toast-wrapper" class="fixed top-5 right-5 z-50 space-y-3">
+    {% for message in messages %}
+    <div class="toast flex items-start gap-3 bg-white shadow-lg rounded-lg px-5 py-4
+                border-l-4 border-green-500 text-gray-800
+                transform translate-x-40 opacity-0
+                transition-all duration-500 ease-out
+                max-w-xs w-full">
+
+        <!-- Icon -->
+        <div class="text-green-500 text-lg mt-1">✔</div>
+
+        <!-- Message -->
+        <div class="flex-1 text-sm">
+            {{ message }}
+        </div>
+
+        <!-- Close -->
+        <button class="text-gray-400 hover:text-gray-600 font-bold text-lg"
+            onclick="this.parentElement.remove()">×</button>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toasts = document.querySelectorAll(".toast");
+
+        toasts.forEach((toast, i) => {
+
+            // slide in
+            setTimeout(() => {
+                toast.classList.remove("translate-x-40", "opacity-0");
+            }, 100);
+
+            // auto remove
+            setTimeout(() => {
+                toast.classList.add("translate-x-40", "opacity-0");
+                setTimeout(() => toast.remove(), 400);
+            }, 3500 + (i * 300));
+
+        });
+    });
+</script>
+{% endif %}
+
+
+
+
+
 <!-- HERO SECTION -->
 <section class="relative py-24 bg-fixed bg-center bg-cover text-white overflow-hidden "
     style="background-image: url('https://static9.depositphotos.com/1594308/1249/i/450/depositphotos_12497883-stock-photo-business-coaching.jpg');">
@@ -29,7 +80,7 @@
             Send Your Inquiry
         </h2>
 
-        <form method="POST" class="bg-gray-50 p-8 rounded-xl shadow-lg">
+        <form method="POST" action="{% url 'contact' %}" class="bg-gray-50 p-8 rounded-xl shadow-lg">
             {% csrf_token %}
 
             <div class="grid md:grid-cols-2 gap-6">
@@ -42,19 +93,19 @@
 
                 <div>
                     <label class="block mb-2 font-medium">Phone Number</label>
-                    <input type="text" name="phone" placeholder="Enter Number" required
+                    <input type="tel" name="phone" placeholder="Enter Number" required
                         class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
                 </div>
 
                 <div>
                     <label class="block mb-2 font-medium">Preferred Course</label>
-                    <input type="text" name="Course" placeholder="Enter Course" required
+                    <input type="text" name="course" placeholder="Enter Course" required
                         class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
                 </div>
 
                 <div>
                     <label class="block mb-2 font-medium">Preferred Location</label>
-                    <input type="text" name="Location" placeholder="Location" required
+                    <input type="text" name="location" placeholder="Location" required
                         class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-700 outline-none">
                 </div>
 
@@ -70,8 +121,8 @@
                 class="mt-6 w-full bg-lc-gradient text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
                 Submit Inquiry
             </button>
-
         </form>
+
     </div>
 </section>
 
@@ -88,109 +139,33 @@
 
         <div class="grid md:grid-cols-3 gap-8">
 
+            {% for b in branch %}
             <!-- Kollam -->
             <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
 
                 <div class="flex items-center gap-3 mb-3">
-                    <i class="fa-solid fa-building text-orange-300 text-xl"></i>
-                    <h3 class="font-semibold text-xl">Kollam</h3>
+                    <i class="fa-solid fa-building text-white text-xl"></i>
+                    <h3 class="font-semibold text-xl">{{ b.town }}</h3>
                 </div>
 
                 <p class="text-white/90 flex items-start gap-2">
                     <i class="fa-solid fa-location-dot mt-1"></i>
-                    High School Junction, Karunagappally
+                    {{ b.district }}
                 </p>
 
-             
+
 
                 <div class="flex gap-4 mt-4">
-                    <a href="https://maps.google.com/?q=Karunagappally Kerala"
-                       target="_blank"
-                       class="text-sm bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
+                    <a href="{{ b.map_url }}" target="_blank"
+                        class="text-sm bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:opacity-90 transition">
                         View Map
                     </a>
                 </div>
             </div>
 
-
-            <!-- Piravom -->
-            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <i class="fa-solid fa-building text-orange-300"></i>
-                    <h3 class="font-semibold text-xl">Piravom</h3>
-                </div>
-
-                <p class="text-white/90 flex items-start gap-2">
-                    <i class="fa-solid fa-location-dot mt-1"></i>
-                    Piravom, Kerala
-                </p>
-
-                <a href="https://maps.google.com/?q=Piravom Kerala"
-                   target="_blank"
-                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
-                    View Map
-                </a>
-            </div>
+            {% endfor %}
 
 
-            <!-- Thodupuzha -->
-            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <i class="fa-solid fa-building text-orange-300"></i>
-                    <h3 class="font-semibold text-xl">Thodupuzha</h3>
-                </div>
-
-                <p class="text-white/90 flex items-start gap-2">
-                    <i class="fa-solid fa-location-dot mt-1"></i>
-                    Thodupuzha, Kerala
-                </p>
-
-                <a href="https://maps.google.com/?q=Thodupuzha Kerala"
-                   target="_blank"
-                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
-                    View Map
-                </a>
-            </div>
-
-
-            <!-- Pathanamthitta -->
-            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <i class="fa-solid fa-building text-orange-300"></i>
-                    <h3 class="font-semibold text-xl">Pathanamthitta</h3>
-                </div>
-
-                <p class="text-white/90 flex items-start gap-2">
-                    <i class="fa-solid fa-location-dot mt-1"></i>
-                    Pathanamthitta, Kerala
-                </p>
-
-                <a href="https://maps.google.com/?q=Pathanamthitta Kerala"
-                   target="_blank"
-                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
-                    View Map
-                </a>
-            </div>
-
-
-            <!-- Kolenchery -->
-            <div class="bg-lc-gradient text-white p-6 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                <div class="flex items-center gap-3 mb-3">
-                    <i class="fa-solid fa-building text-orange-300"></i>
-                    <h3 class="font-semibold text-xl">Kolenchery</h3>
-                </div>
-
-                <p class="text-white/90 flex items-start gap-2">
-                    <i class="fa-solid fa-location-dot mt-1"></i>
-                    Kolenchery, Kerala
-                </p>
-
-                <a href="https://maps.google.com/?q=Kolenchery Kerala"
-                   target="_blank"
-                   class="inline-block mt-4 bg-white text-blue-900 px-4 py-2 rounded-full font-semibold hover:bg-orange-300 transition">
-                    View Map
-                </a>
-            </div>
 
         </div>
     </div>
@@ -208,9 +183,15 @@
     <h2 class="text-3xl font-bold mb-4">Start Your Medical Career Journey Today</h2>
     <p class="mb-6">Expert admission guidance & trusted college placements.</p>
 
-    <a href="tel:+917795990059" class="bg-lcDark px-8 py-3 rounded-lg font-semibold hover:opacity-80 transition">
+    <a href="tel:+917795990059"
+        class=" bg-white text-lcDark px-8 py-3 rounded-lg font-semibold hover:opacity-80 transition">
         Call Now
     </a>
 </section>
+
+
+
+
+
 
 {% endblock %}

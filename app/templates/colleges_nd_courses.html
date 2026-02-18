@@ -4,228 +4,142 @@
 
 <!-- ================= PAGE BANNER ================= -->
 <section
-    class="relative h-[35vh] md:h-[40vh]  bg-scroll md:bg-fixed bg-center bg-cover text-white flex items-center justify-center"
-    style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644');">
-    <div class="absolute inset-0 bg-black/60"></div>
+    class="relative h-[34vh] md:h-[42vh] bg-center bg-cover flex items-center justify-center text-white"
+    style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644');">
+
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
 
     <div class="relative text-center px-6">
-        <h1 class="text-3xl md:text-5xl font-bold mb-3 uppercase">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-wide uppercase">
             Courses & Colleges
         </h1>
 
-        <p class="text-white/90 text-lg">
-            <a href="/" class="hover:text-rrOrange transition">Home</a>
+        <p class="mt-3 text-white/90 text-sm md:text-lg">
+            <a href="/" class="hover:text-[#0E9F9A] transition">Home</a>
             <span class="mx-2">›</span>
             Courses
         </p>
     </div>
 </section>
 
+<!-- ================= CONTENT ================= -->
+<section class="py-14 md:py-20 bg-gradient-to-b from-white to-gray-50">
+<div class="max-w-7xl mx-auto px-5">
 
+    <!-- Heading -->
+    <h2 class="text-2xl md:text-4xl text-center mb-10 font-bold text-gray-800 tracking-wide uppercase">
+        Colleges
+    </h2>
 
+    <!-- ================= SEARCH BAR ================= -->
+    <div class="max-w-5xl mx-auto mb-10">
+        <div class="bg-white/80 backdrop-blur-lg border border-gray-200 shadow-xl rounded-2xl p-4 md:p-5">
 
-
-
-
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-
-        <!-- Heading -->
-        <h2 class="text-3xl md:text-4xl text-center mb-14 text-lcDark uppercase">
-            Colleges
-        </h2>
-
-
-        <div class="bg-white shadow-md rounded-2xl p-4 md:p-6 mb-10">
-
-            <div class="flex flex-col md:flex-row gap-4 md:items-center">
+            <form method="get"
+                class="flex flex-col md:flex-row gap-3 md:items-center">
 
                 <!-- Search -->
-                <div class="relative flex-1">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                    <input type="text" placeholder="Search colleges..."
-                        class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0E9F9A] focus:outline-none">
+                <div class="flex-1 relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+
+                    <input type="text"
+                        name="q"
+                        placeholder="Search colleges..."
+                        value="{{ search_query|default:'' }}"
+                        class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 bg-gray-50
+                               focus:ring-2 focus:ring-[#0E9F9A] focus:bg-white
+                               focus:outline-none transition text-sm md:text-base">
                 </div>
 
-                <!-- State Filter -->
-                <div class="w-full md:w-56">
-                    <select
-                        class="w-full py-3 px-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0E9F9A] focus:outline-none">
-                        <option>All States</option>
-                        <option>Karnataka</option>
-                        <option>Tamil Nadu</option>
-                        <option>Kerala</option>
-                        <option>Maharashtra</option>
-                    </select>
-                </div>
+                <!-- State -->
+                <select name="location"
+                    class="w-full md:w-48 py-3 px-4 rounded-xl border border-gray-200 bg-gray-50
+                           focus:ring-2 focus:ring-[#0E9F9A] focus:outline-none transition">
+                    <option value="">All States</option>
+                    {% for loc in all_locations %}
+                    <option value="{{ loc.id }}"
+                        {% if loc.id|stringformat:"s" == selected_location %}selected{% endif %}>
+                        {{ loc.state }}
+                    </option>
+                    {% endfor %}
+                </select>
 
-                <!-- Course Filter -->
-                <div class="w-full md:w-56">
-                    <select
-                        class="w-full py-3 px-4 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#0E9F9A] focus:outline-none">
-                        <option>All Courses</option>
-                        <option>MBBS</option>
-                        <option>Nursing</option>
-                        <option>Engineering</option>
-                        <option>Allied Health</option>
-                        <option>Law</option>
-                    </select>
-                </div>
+                <!-- Course -->
+                <select name="course"
+                    class="w-full md:w-48 py-3 px-4 rounded-xl border border-gray-200 bg-gray-50
+                           focus:ring-2 focus:ring-[#0E9F9A] focus:outline-none transition">
+                    <option value="">All Courses</option>
+                    {% for course in all_courses %}
+                    <option value="{{ course.id }}"
+                        {% if course.id|stringformat:"s" == selected_course %}selected{% endif %}>
+                        {{ course.name }}
+                    </option>
+                    {% endfor %}
+                </select>
 
                 <!-- Button -->
-                <button
-                    class="bg-lc-gradient text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition">
+                <button type="submit"
+                    class="flex items-center justify-center gap-2 w-full md:w-auto px-6 py-3 rounded-xl font-semibold text-white
+                           bg-gradient-to-r from-[#0E9F9A] to-[#0c7c78]
+                           hover:shadow-lg hover:scale-[1.02] active:scale-95 transition">
+                    <i class="fa-solid fa-search"></i>
                     Search
                 </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Card -->
-            <a href="{% url 'college_details' %}"
-                class="group block transform transition duration-300 hover:-translate-y-2">
-
-                <div class="relative overflow-hidden rounded-2xl shadow-md">
-
-                    <img src="https://th-i.thgim.com/public/incoming/pjrb4x/article66215694.ece/alternates/LANDSCAPE_1200/IMG_2303_30_3_2021_19_45_2_1_3IAAA0AD.jpg"
-                        class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
-
-                    <!-- overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
-                    <!-- name -->
-                    <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg">
-                        Karnataka Medical College
-                    </div>
-
-                </div>
-
-                <p class="mt-3 text-sm font-medium text-[#0F766E]">
-                    Karnataka, India
-                </p>
-            </a>
-
-
-            <!-- Card -->
-            <a href="{% url 'college_details' %}"
-                class="group block transform transition duration-300 hover:-translate-y-2">
-
-                <div class="relative overflow-hidden rounded-2xl shadow-md">
-                    <img src="https://lh4.googleusercontent.com/proxy/2vSerMFmbOuxfw-DI2aplNp4_fGE-hWWQ5nDCac9yggSVr2WtYYQT2kewkUhpzA3cjt8FCnw"
-                        class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg">
-                        Tamil Nadu Health Science College
-                    </div>
-                </div>
-
-                <p class="mt-3 text-sm font-medium text-[#0F766E]">
-                    Tamil Nadu, India
-                </p>
-            </a>
-
-
-            <!-- Card -->
-            <a href="{% url 'college_details' %}"
-                class="group block transform transition duration-300 hover:-translate-y-2">
-
-                <div class="relative overflow-hidden rounded-2xl shadow-md">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHJ226Zx6IqPFukzF1PkA8sPhvDVl2qbzYxw&s"
-                        class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg">
-                        Kerala Nursing Institute
-                    </div>
-                </div>
-
-                <p class="mt-3 text-sm font-medium text-[#0F766E]">
-                    Kerala, India
-                </p>
-            </a>
-
-
-            <!-- Card -->
-            <a href="{% url 'college_details' %}"
-                class="group block transform transition duration-300 hover:-translate-y-2">
-
-                <div class="relative overflow-hidden rounded-2xl shadow-md">
-                    <img src="https://www.gopalancolleges.com/gcem/images/gallery/campus.jpg"
-                        class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg">
-                        Bangalore Engineering College
-                    </div>
-                </div>
-
-                <p class="mt-3 text-sm font-medium text-[#0F766E]">
-                    Bangalore, Karnataka
-                </p>
-            </a>
-
-
-            <!-- Card -->
-            <a href="{% url 'college_details' %}"
-                class="group block transform transition duration-300 hover:-translate-y-2">
-
-                <div class="relative overflow-hidden rounded-2xl shadow-md">
-                    <img src="https://www.collegebatch.com/static/clg-gallery/saveetha-school-of-law-chennai-234288.webp"
-                        class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg">
-                        Chennai School of Law
-                    </div>
-                </div>
-
-                <p class="mt-3 text-sm font-medium text-[#0F766E]">
-                    Chennai, Tamil Nadu
-                </p>
-            </a>
-
-
-            <!-- Card -->
-            <a href="{% url 'college_details' %}"
-                class="group block transform transition duration-300 hover:-translate-y-2">
-
-                <div class="relative overflow-hidden rounded-2xl shadow-md">
-                    <img src="https://tnau.ac.in/site/acri-coimbatore/wp-content/uploads/sites/61/2022/06/R-I-2-1536x1019.jpg"
-                        class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                    <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg">
-                        Coimbatore Agricultural College
-                    </div>
-                </div>
-
-                <p class="mt-3 text-sm font-medium text-[#0F766E]">
-                    Coimbatore, Tamil Nadu
-                </p>
-            </a>
-
+            </form>
         </div>
     </div>
+
+    <!-- ================= COLLEGE GRID ================= -->
+    {% if colleges %}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
+
+        {% for c in colleges %}
+        <a href="{% url 'college_details' c.slug %}"
+           class="group block transition duration-300 hover:-translate-y-2">
+
+            <div class="relative overflow-hidden rounded-2xl shadow-md">
+
+                <img src="{{ c.image1.url }}"
+                     alt="{{ c.name }}"
+                     class="w-full h-56 object-cover transition duration-500 group-hover:scale-110">
+
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                <div class="absolute bottom-4 left-4 right-4 text-white font-semibold text-lg leading-tight">
+                    {{ c.name }}
+                </div>
+            </div>
+
+            <p class="mt-3 text-sm font-medium text-[#0F766E] flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-xs"></i>
+                {{ c.location.state }}
+            </p>
+        </a>
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+    <!-- EMPTY STATE -->
+    <div class="flex flex-col items-center justify-center text-center py-20">
+
+        <div class="bg-gray-100 rounded-full p-6 mb-5 shadow-inner">
+            <i class="fa-solid fa-school text-4xl text-gray-400"></i>
+        </div>
+
+        <h3 class="text-xl font-semibold text-gray-700 mb-2">
+            No Colleges Found
+        </h3>
+
+        <p class="text-gray-500 max-w-md">
+            Try adjusting your search filters or explore different states and courses.
+        </p>
+    </div>
+    {% endif %}
+
+</div>
 </section>
-
-
-
-
-
-
-<style>
-    .course-pill {
-        padding: 6px 12px;
-        border-radius: 999px;
-        font-size: 13px;
-        background: #E6FFFA;
-        color: #0F766E;
-        font-weight: 500;
-    }
-</style>
-
-
-
-
 
 {% endblock %}
